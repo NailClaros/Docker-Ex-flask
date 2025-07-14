@@ -1,5 +1,5 @@
 from unittest import result
-from flask import Flask, render_template, request, jsonify, session
+from flask import Flask, render_template, request, jsonify, session, url_for
 from apis import api_1_shazam
 import os
 from dotenv import load_dotenv
@@ -10,7 +10,7 @@ app.secret_key = os.getenv("SECRET_KEY")
 def index():
     return render_template('index.html')
 
-@app.get('/api_1')
+@app.route('/api_1', methods=['GET'])
 def api_1():
     return render_template('api.html')
 
