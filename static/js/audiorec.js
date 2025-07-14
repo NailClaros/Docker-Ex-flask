@@ -14,11 +14,10 @@ function runApi() {
     })
     .then(data => {
         if (data.song && data.artist && data.cover_art) {
-            document.getElementById("result").innerHTML = `
-                <h3>🎵 Song: ${data.song}</h3>
-                <p>🎤 Artist: ${data.artist}</p>
-                <img src="${data.cover_art}" alt="Cover Art" width="200">
-            `;
+            localStorage.setItem('apiResult', JSON.stringify(data));
+            localStorage.setItem('apiUsed', 'true');
+
+            displayResult(data);
             button.innerText = "✅ Success";
         } else {
             document.getElementById("result").innerText = "Track not found.";
@@ -31,3 +30,24 @@ function runApi() {
         button.innerText = "Blocked";
     });
 }
+
+function displayResult(data) {
+    document.getElementById("result").innerHTML = `
+        <h3>🎵 Song: ${data.song}</h3>
+        <p>🎤 Artist: ${data.artist}</p>
+        <img src="${data.cover_art}" alt="Cover Art" width="200">
+    `;
+}
+
+window.onload = function () {
+    const saved = localStorage.getItem('apiResult');
+    const used = localStorage.getItem('apiUsed');
+    const button = document.getElementById("runButton");
+
+    if (saved && used === 'true') {
+        const data = JSON.parse(saved);
+        displayResult(data);
+        button.disabled = true;
+        button.innerText = "✅ Success";
+    }
+};
