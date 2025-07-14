@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+<script src="{{ url_for('static', filename='js/audiorec.js') }}"></script>
+</head>
+<body class="display-flex flex-column align-items-center justify-content-center vh-100">
+
+    <h1>API Endpoint</h1>
+    <p>This is the API page.</p>
+    <p>Feel free to explore!</p>
+
+    <p>Here we take a recording a return the song name and image!</p>
+    <button id="runButton" onclick="runApi()">🎧 Run Shazam API</button>
+
+    <div id="result" style="margin-top: 20px;"></div>
+    <a href="/">Go back to Home</a>
+
+
+</body> 
+</html>
