@@ -1,8 +1,6 @@
-from wsgiref import headers
 from dotenv import load_dotenv
 import requests
 import base64
-from json import dumps, loads
 load_dotenv()
 import os
 
