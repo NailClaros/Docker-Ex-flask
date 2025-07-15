@@ -27,5 +27,6 @@ def api_1_run():
 
 @app.route('/reset')
 def reset_api_session():
-    session.pop('api_used', None)  # Remove the 'api_used' flag
-    return "✅ Session reset. Return to <a href='/'>home</a>."
+    session.pop('api_used', None)
+    return render_template("reset.html")
+
